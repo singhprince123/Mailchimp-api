@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/signup', (req, res ) => {
     const {firstName,lastName , email} = req.body;
-    
+    console.log("first name", firstName)
     if(!firstName || !lastName || !email){
         res.redirect('/fail.html');
         return;
@@ -52,11 +52,13 @@ app.post('/signup', (req, res ) => {
 
     request(options, (err ,response, body) => {
      if(err){
+         console.log('error from ' ,err)
          res.redirect('/fail.html')
      } else {
          if(response.statusCode === 200){
              res.redirect('/success.html')
          }else {
+             
              res.redirect('/fail.html')
          }
      }
