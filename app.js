@@ -5,6 +5,9 @@ const path = require('path');
 
 const app = express();
 
+require('dotenv').config()
+
+console.log(process.env.API_KEY)
 
 //body-parser
 app.use(bodyParser.urlencoded({extended: true}));
@@ -44,7 +47,7 @@ app.post('/signup', (req, res ) => {
         url : 'https://us19.api.mailchimp.com/3.0/lists/6f65eed3a2',
         method: 'POST',
         headers: {
-            Authorization: 'auth 9510995c228833427ad56d7252750aae-us19'
+            Authorization: process.env.API_KEY
         },
         body: postData
 
